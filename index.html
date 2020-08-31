@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Events</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;600;800&display=swap"
+            rel="stylesheet">
+        <style>
+            html {
+                scroll-behavior: smooth;
+                text-align: center;
+            }
+
+            body {
+                width: 100%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                padding-left: 1%;
+                padding-right: 1%;
+                text-align: center;
+                padding-top: 2%;
+                padding-bottom: 2%;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 20px;
+            }
+
+            input {
+                padding: 1em;
+                color: black;
+                border-color: black;
+                border-style: solid;
+            }
+
+            p {
+                align-items: baseline;
+            }
+
+            .custom {
+                border-width: 1.5px;
+                padding: 0px;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                border-color: black;
+                text-align: center;
+                width: 92%;
+                margin-left: auto;
+                margin-right: auto;
+                border-style: solid;
+                align-items: baseline;
+                margin-bottom: 5%;
+
+            }
+
+            .ctop {
+
+                height: 20%;
+                width: 100%;
+                color: white;
+                background-color: black;
+                font-size: 120%;
+                vertical-align: text-top;
+                padding-top: 1%;
+                padding-bottom: 1%;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+            }
+
+            .ctop>p {
+                padding-bottom: 0%;
+                margin: 0px 0px 0px 0px;
+            }
+
+            .cinput {
+                height: 50%;
+                width: 100%;
+                background-color: white;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+
+            .cinput>input,
+            textarea {
+                width: 100%;
+                padding: 2% 0 2% 0;
+                font-size: 100%;
+                border-color: transparent;
+                border-width: 0px;
+                border-style: none;
+                text-align: center;
+            }
+
+            input:hover,
+            textarea:hover {
+                cursor: pointer;
+            }
+
+            input:focus {
+                cursor: pointer;
+                border-color: transparent;
+            }
+
+            textarea {
+
+                scrollbar-width: 0px;
+                max-height: max-content;
+                height: 100%;
+            }
+
+            .row,
+            .col-12,
+            .col-xs-12,
+            .col-sm-12,
+            .col-md-4,
+            .col-lg-4 {
+                align-items: center;
+            }
+
+            button {
+                color: white;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                background-color: #00e096;
+                border-radius: 10%;
+                font-size: 23px;
+                border-style: none;
+                border-color: transparent;
+                border-width: 0px;
+                font-weight: bolder;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
+            button:hover {
+                cursor: pointer;
+                color: #00e096;
+                background-color: white;
+            }
+
+            button:focus {
+                box-shadow: none;
+            }
+
+            .wrapper {
+                max-width: max-content;
+                min-width: max-content;
+                /* margin-right:2%;
+            margin-left:2%;
+            margin-bottom:5%; */
+                display: inline-block;
+                margin-bottom: 3%;
+            }
+
+            .wrapper>input {
+                opacity: 0;
+                position: fixed;
+                left: 0px;
+                bottom: 0px;
+            }
+
+            .control-me {
+                width: fit-content;
+                height: fit-content;
+                background-color: white;
+                padding: 4px 6px 1px 6px;
+                border-radius: 10px;
+                border-color: black;
+                border-style: solid;
+                border-width: 2px;
+
+
+            }
+
+            label:hover {
+                cursor: pointer;
+            }
+
+
+            .interest:checked~.control-me {
+                width: fit-content;
+                height: fit-content;
+                background-color: #00e096;
+                padding: 4px 6px 1px 6px;
+                border-radius: 10px;
+                border-color: black;
+                border-style: solid;
+                border-width: 2px;
+            }
+
+            .toggle-text {
+                width: fit-content;
+                height: fit-content;
+                background-color: rgb(26, 26, 26);
+                padding-top: 1%;
+                padding-bottom: 1%;
+                padding-right: 2%;
+                padding-left: 2%;
+                border-radius: 10px;
+                font-size: 70%;
+                margin-bottom: 2%;
+                margin-left: 5%;
+                margin-right: 5%;
+                display: inline-block;
+                font-weight: bold;
+            }
+
+            .toggle-text>label {
+                color: #e00000;
+            }
+
+            .toggle-text:hover {
+                cursor: pointer;
+            }
+
+            .toggle-text>label {
+                margin: 0px;
+                padding: 0px;
+            }
+
+
+
+            input[type="radio"] {
+                opacity: 0;
+                position: fixed;
+                bottom: 0px;
+                right: 0px;
+            }
+
+            input[type="radio"]:checked~label {
+                color: #00e096;
+            }
+
+            .fluid-container {
+                padding: 0px;
+            }
+
+            .row {
+                padding: 0px;
+            }
+
+            fieldset {
+                text-align: center;
+                margin-top: 2%;
+                margin-bottom: 3%;
+                width: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="jumbotron" style="background-color: #20f5a0;">
+            <h1 style="font-family: 'Open Sans', sans-serif; color:black; font-weight:bolder; font-size:300%;">follege
+            </h1>
+        </div>
+
+        <h3 style="font-weight: bolder; margin-top:5%; margin-bottom:5%;">Add events:</h3>
+        <div class="fluid-container" style="text-align:center; margin-left:auto; margin-right:auto;">
+            <form id = "formElem">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+                                <p>Title</p>
+                            </div>
+                            <div class="cinput">
+                                <input type="text" name="title" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+                                <p>Owner</p>
+                            </div>
+                            <div class="cinput">
+                                <input type="text" name="owner" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+
+                                <p>Location</p>
+
+                                <div class="toggle-text">
+                                    <input id="online" type="radio" name="line">
+                                    <label for="online" onclick="tick('online')">ONLINE</label>
+                                </div>
+
+
+                                <div class="toggle-text">
+                                    <input id="offline" type="radio" name="line">
+                                    <label for="offline" onclick="tick('offline')">OFFLINE</label>
+                                </div>
+                            </div>
+
+                            <div class="cinput">
+                                <input id="loc" type="text" name="location" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="text-align:center; ">
+                    <fieldset>
+                        <legend>
+                            <h2>Interests</h2>
+                        </legend>
+                        <div class="col wrapper">
+                            <input class="interest" id="business" name='interest[]' type="checkbox"
+                                value="0">
+                            <div class="control-me">
+                                <label for='business'>business</label>
+                            </div>
+                        </div>
+                        <div class="col wrapper">
+                            <input class="interest" id="market" name='interest[]' type="checkbox"
+                                value="1">
+                            <div class="control-me">
+                                <label for='market'>Marketing</label>
+                            </div>
+                        </div>
+                        <div class="col wrapper">
+                            <input class="interest" id="stock" name='interest[]' type="checkbox"
+                                value="1">
+                            <div class="control-me">
+                                <label for='stock'>Stock-Market</label>
+                            </div>
+                        </div>
+                        <div class="col wrapper">
+                            <input class="interest" id="programming" name='interest[]' type="checkbox"
+                                value="1">
+                            <div class="control-me">
+                                <label for='programming'>Pogramming</label>
+                            </div>
+                        </div>
+                        <div class="col wrapper">
+                            <input class="interest" id="fac" name='interest[]' type="checkbox"
+                                value="1">
+                            <div class="control-me">
+                                <label for='fac'>Fun and Chill</label>
+                            </div>
+                        </div>
+                        <div class="col wrapper">
+                            <input class="interest" id="tas" name='interest[]' type="checkbox"
+                                value="1">
+                            <div class="control-me">
+                                <label for='tas'>Tech and Startups</label>
+                            </div>
+                        </div>
+                        <div class="col wrapper">
+                            <input class="interest" id="caf" name='interest[]' type="checkbox"
+                                value="1">
+                            <div class="control-me">
+                                <label for='caf'>Culture and Fest</label>
+                            </div>
+                        </div>
+                        <div class="col wrapper">
+                            <input class="interest" id="projects" name='interest[]' type="checkbox"
+                                value="1">
+                            <div class="control-me">
+                                <label for='projects'>Projects</label>
+                            </div>
+                        </div>
+                        <div class="col wrapper">
+                            <input class="interest" id="qacs" name='interest[]' type="checkbox"
+                                value="1">
+                            <div class="control-me">
+                                <label for='qacs'>Quizzes and Case Study</label>
+                            </div>
+                        </div>
+                        <div class="col wrapper">
+                            <input class="interest" id="design" name='interest[]' type="checkbox"
+                                value="1">
+                            <div class="control-me">
+                                <label for='design'>Design</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+                                <p>About</p>
+                            </div>
+                            <div class="cinput">
+                                <textarea name="about"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+                                <p>Link</p>
+                            </div>
+                            <div class="cinput">
+                                <input type="text" name="link" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+                                <p>Organiser Name</p>
+                            </div>
+                            <div class="cinput">
+                                <input type="text" name="orgName" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+                                <p>Organiser Number</p>
+                            </div>
+                            <div class="cinput">
+                                <input type="text" name="orgNumber" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+                                <p>Organiser Mail</p>
+                            </div>
+                            <div class="cinput">
+                                <input type="email" name="orgMail" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+                                <p>Image</p>
+                            </div>
+                            <div class="cinput">
+                                <input type="file" name="image" id="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+                                <p>Date</p>
+                            </div>
+                            <div class="cinput">
+                                <input type="date" name="date" id="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+                                <p>Time</p>
+                            </div>
+                            <div class="cinput">
+                                <input type="time" name="time" id="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+                                <p>Duration</p>
+                            </div>
+                            <div class="cinput">
+                                <input type="text" name="duration" id="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <p><button type="submit">Submit</button></p>
+        </form>
+
+        <script>
+            function tick(id) {
+                if (id == 'online') {
+                    var line = document.getElementById('loc');
+                    line.value = "ONLINE";
+                }
+                else {
+                    var line = document.getElementById('loc');
+                    line.value = "";
+                }
+            }
+
+
+            formElem.onsubmit = async (e) => {
+            e.preventDefault();
+
+            let response = await fetch('https://follege.herokuapp.com/events/addEvent', {
+            method: 'POST',
+            body: new FormData(formElem)
+            });
+            let result = await response.json();
+            console.log(result);
+        };
+
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </body>
+
+</html>
