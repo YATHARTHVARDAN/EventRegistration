@@ -495,7 +495,7 @@
             formElem.onsubmit = async (e) => {
             e.preventDefault();
 
-            let response = await fetch('http://localhost:3000/event/addPhoto', {
+            let response = await fetch('http://localhost:3000/events/addPhoto', {
             method: 'POST',
             body: new FormData(formElem)
             });
