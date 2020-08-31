@@ -496,10 +496,16 @@
             formElem.onsubmit = async (e) => {
             e.preventDefault();
 
+            let formdata = new FormData();
+
+            formdata.append("title","hello");
+                console.log(formdata);
             let response = await fetch('https://follege.herokuapp.com/events/addEvent', {
             method: 'POST',
             body: new FormData(formElem)
             });
+
+
             let result = await response.json();
             console.log(result);
         };
