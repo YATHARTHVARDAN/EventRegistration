@@ -261,7 +261,7 @@
 
         <h3 style="font-weight: bolder; margin-top:5%; margin-bottom:5%;">Add events:</h3>
         <div class="fluid-container" style="text-align:center; margin-left:auto; margin-right:auto;">
-            <form id = "formElem" class="eventForm" enctype='application/json'>
+            <form id = "formElem" class="eventForm" method="POST" action="https://follege.herokuapp.com/events/addEvent" enctype='application/json'>
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
@@ -491,27 +491,6 @@
                     venue.value = "";
                 }
             }
-
-
-            formElem.onsubmit = async (e) => {
-            e.preventDefault();
-            const form = document.getElementsByClassName('.eventForm')[0];
-            const g = new FormData(form);
-            console.log(g);
-            const data = JSON.stringify(g);
-                console.log(data);
-            formdata.append("title","hello");
-                console.log(formdata);
-            let response = await fetch('https://follege.herokuapp.com/events/addEvent', {
-            method: 'POST',
-            body: new FormData(formElem)
-            });
-
-
-
-            let result = await response.json();
-            console.log(result);
-        };
 
         </script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
