@@ -11,6 +11,12 @@
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;600;800&display=swap"
             rel="stylesheet">
         <style>
+            #hide{
+                position:fixed;
+                left:0;
+                bottom:0;
+                opacity: 0;
+            }
             html {
                 scroll-behavior: smooth;
                 text-align: center;
@@ -473,6 +479,7 @@
                             </div>
                         </div>
                     </div>
+                    <input type="text" name="imageUrl" id="hide">
                 </div>
         </div>
         <p><button type="submit">Submit</button></p>
@@ -499,10 +506,9 @@
             method: 'POST',
             body: new FormData(formElem)
             });
-
             let result = await response.json();
-
-            alert(result);
+            var hide = document.getElementById('hide');
+            hide.value = result;
         };
 
         </script>
