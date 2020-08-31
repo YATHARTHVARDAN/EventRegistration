@@ -261,6 +261,24 @@
 
         <h3 style="font-weight: bolder; margin-top:5%; margin-bottom:5%;">Add events:</h3>
         <div class="fluid-container" style="text-align:center; margin-left:auto; margin-right:auto;">
+        <form id="imageForm" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="custom">
+                    <div class="ctop">
+                        <p>Upload Image for this event</p>
+                    </div>
+                    <div class="cinput">
+                        <input type="file" name="imageFile" />
+                    </div>
+                </div>
+            </div>
+            <p><button type="submit">Upload</button></p>
+        </div>
+        </form>
+
+        </div>
+        <div class="fluid-container" style="text-align:center; margin-left:auto; margin-right:auto;">
             <form id = "formElem" class="eventForm" method="POST" action="http://localhost:3000/events/addEvent" enctype='application/json'>
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
@@ -276,10 +294,10 @@
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
                             <div class="ctop">
-                                <p>Owner</p>
+                                <p>Organiser</p>
                             </div>
                             <div class="cinput">
-                                <input type="text" name="host" />
+                                <input type="text" name="by" />
                             </div>
                         </div>
                     </div>
@@ -401,77 +419,57 @@
                                 <p>Link</p>
                             </div>
                             <div class="cinput">
-                                <input type="text" name="Url" />
+                                <input type="text" name="link" />
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
                             <div class="ctop">
-                                <p>Organiser Name</p>
+                                <p>Start Date</p>
                             </div>
                             <div class="cinput">
-                                <input type="text" name="orgName" />
+                                <input type="text" placeholder="( eg. 23 August 2020) write month starting with a capital" name="startDate" />
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
                             <div class="ctop">
-                                <p>Organiser Number</p>
+                                <p>Start Time</p>
                             </div>
                             <div class="cinput">
-                                <input type="text" name="orgNumber" />
+                                <input type="text" placeholder="(eg. 2:00 pm ->  14:00)" name="startTime" />
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
                             <div class="ctop">
-                                <p>Organiser Mail</p>
+                                <p>End Date (eg . 23 August 2020)</p>
                             </div>
                             <div class="cinput">
-                                <input type="email" name="orgMail" />
+                                <input type="text" placeholder="( eg. 23 August 2020) write month starting with a capital" name="endDate" />
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
                             <div class="ctop">
-                                <p>Image</p>
+                                <p>End Time</p>
                             </div>
                             <div class="cinput">
-                                <input type="file" name="imageUrl" id="" />
+                                <input type="text" placeholder="(eg. 2:00 pm ->  14:00)" name="endTime" id="" />
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
                             <div class="ctop">
-                                <p>Date</p>
+                                <p>Cost in Rs.</p>
                             </div>
                             <div class="cinput">
-                                <input type="date" name="date" id="" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                        <div class="custom">
-                            <div class="ctop">
-                                <p>Time</p>
-                            </div>
-                            <div class="cinput">
-                                <input type="time" name="time" id="" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                        <div class="custom">
-                            <div class="ctop">
-                                <p>Duration</p>
-                            </div>
-                            <div class="cinput">
-                                <input type="text" name="duration" id="" />
+                                <input type="text" name="cost" id="" />
                             </div>
                         </div>
                     </div>
@@ -491,6 +489,21 @@
                     venue.value = "";
                 }
             }
+
+            var formElem = document.getElementById('imageForm');
+
+            formElem.onsubmit = async (e) => {
+            e.preventDefault();
+
+            let response = await fetch('http://localhost:3000/event/addPhoto', {
+            method: 'POST',
+            body: new FormData(formElem)
+            });
+
+            let result = await response.json();
+
+            alert(result.message);
+        };
 
         </script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
