@@ -261,7 +261,7 @@
 
         <h3 style="font-weight: bolder; margin-top:5%; margin-bottom:5%;">Add events:</h3>
         <div class="fluid-container" style="text-align:center; margin-left:auto; margin-right:auto;">
-            <form id = "formElem">
+            <form id = "formElem" class="eventForm" enctype='application/json'>
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
@@ -279,7 +279,7 @@
                                 <p>Owner</p>
                             </div>
                             <div class="cinput">
-                                <input type="text" name="owner" />
+                                <input type="text" name="host" />
                             </div>
                         </div>
                     </div>
@@ -290,13 +290,13 @@
                                 <p>Location</p>
 
                                 <div class="toggle-text">
-                                    <input id="online" type="radio" name="line">
+                                    <input id="online" type="radio" name="venue">
                                     <label for="online" onclick="tick('online')">ONLINE</label>
                                 </div>
 
 
                                 <div class="toggle-text">
-                                    <input id="offline" type="radio" name="line">
+                                    <input id="offline" type="radio" name="venue">
                                     <label for="offline" onclick="tick('offline')">OFFLINE</label>
                                 </div>
                             </div>
@@ -313,70 +313,70 @@
                             <h2>Interests</h2>
                         </legend>
                         <div class="col wrapper">
-                            <input class="interest" id="business" name='interest[]' type="checkbox"
+                            <input class="interest" id="business" name='interest[0][interest]' type="checkbox"
                                 value="0">
                             <div class="control-me">
                                 <label for='business'>business</label>
                             </div>
                         </div>
                         <div class="col wrapper">
-                            <input class="interest" id="market" name='interest[]' type="checkbox"
+                            <input class="interest" id="market" name='interest[1][interest]' type="checkbox"
                                 value="1">
                             <div class="control-me">
                                 <label for='market'>Marketing</label>
                             </div>
                         </div>
                         <div class="col wrapper">
-                            <input class="interest" id="stock" name='interest[]' type="checkbox"
+                            <input class="interest" id="stock" name='interest[3][interest]' type="checkbox"
                                 value="1">
                             <div class="control-me">
                                 <label for='stock'>Stock-Market</label>
                             </div>
                         </div>
                         <div class="col wrapper">
-                            <input class="interest" id="programming" name='interest[]' type="checkbox"
+                            <input class="interest" id="programming" name='interest[4][interest]' type="checkbox"
                                 value="1">
                             <div class="control-me">
                                 <label for='programming'>Pogramming</label>
                             </div>
                         </div>
                         <div class="col wrapper">
-                            <input class="interest" id="fac" name='interest[]' type="checkbox"
+                            <input class="interest" id="fac" name='interest[5][interest]' type="checkbox"
                                 value="1">
                             <div class="control-me">
                                 <label for='fac'>Fun and Chill</label>
                             </div>
                         </div>
                         <div class="col wrapper">
-                            <input class="interest" id="tas" name='interest[]' type="checkbox"
+                            <input class="interest" id="tas" name='interest[6][interest]' type="checkbox"
                                 value="1">
                             <div class="control-me">
                                 <label for='tas'>Tech and Startups</label>
                             </div>
                         </div>
                         <div class="col wrapper">
-                            <input class="interest" id="caf" name='interest[]' type="checkbox"
+                            <input class="interest" id="caf" name='interest[7][interest]' type="checkbox"
                                 value="1">
                             <div class="control-me">
                                 <label for='caf'>Culture and Fest</label>
                             </div>
                         </div>
                         <div class="col wrapper">
-                            <input class="interest" id="projects" name='interest[]' type="checkbox"
+                            <input class="interest" id="projects" name='interest[8][interest]' type="checkbox"
                                 value="1">
                             <div class="control-me">
                                 <label for='projects'>Projects</label>
                             </div>
                         </div>
                         <div class="col wrapper">
-                            <input class="interest" id="qacs" name='interest[]' type="checkbox"
+                            <input class="interest" id="qacs" name='interest[9][interest]' type="checkbox"
                                 value="1">
                             <div class="control-me">
                                 <label for='qacs'>Quizzes and Case Study</label>
                             </div>
                         </div>
                         <div class="col wrapper">
-                            <input class="interest" id="design" name='interest[]' type="checkbox"
+                            <input class="interest" id="design" name='interest[10][interest]' type="checkbox"
                                 value="1">
                             <div class="control-me">
                                 <label for='design'>Design</label>
@@ -401,7 +401,7 @@
                                 <p>Link</p>
                             </div>
                             <div class="cinput">
-                                <input type="text" name="link" />
+                                <input type="text" name="Url" />
                             </div>
                         </div>
                     </div>
@@ -441,7 +441,7 @@
                                 <p>Image</p>
                             </div>
                             <div class="cinput">
-                                <input type="file" name="image" id="" />
+                                <input type="file" name="imageUrl" id="" />
                             </div>
                         </div>
                     </div>
@@ -483,27 +483,30 @@
         <script>
             function tick(id) {
                 if (id == 'online') {
-                    var line = document.getElementById('loc');
-                    line.value = "ONLINE";
+                    var venue = document.getElementById('loc');
+                    venue.value = "ONLINE";
                 }
                 else {
-                    var line = document.getElementById('loc');
-                    line.value = "";
+                    var venue = document.getElementById('loc');
+                    venue.value = "";
                 }
             }
 
 
             formElem.onsubmit = async (e) => {
             e.preventDefault();
-
-            let formdata = new FormData();
-
+            const form = document.getElementsByClassName('.eventForm')[0];
+            const g = new FormData(form);
+            console.log(g);
+            const data = JSON.stringify(g);
+                console.log(data);
             formdata.append("title","hello");
                 console.log(formdata);
             let response = await fetch('https://follege.herokuapp.com/events/addEvent', {
             method: 'POST',
             body: new FormData(formElem)
             });
+
 
 
             let result = await response.json();
