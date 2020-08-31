@@ -269,7 +269,7 @@
         <div class="fluid-container" style="text-align:center; margin-left:auto; margin-right:auto;">
         <form id="imageForm" enctype="multipart/form-data">
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="col-12 col-sm-12 col-md-10 col-lg-10">
                 <div class="custom">
                     <div class="ctop">
                         <p>Upload Image for this event</p>
@@ -285,7 +285,7 @@
 
         </div>
         <div class="fluid-container" style="text-align:center; margin-left:auto; margin-right:auto;">
-            <form id = "formElem" class="eventForm" method="POST" action="http://localhost:3000/events/addEvent" enctype='application/json'>
+            <form id = "formElem" class="eventForm" method="POST" action="https://follege.herokuapp.com/events/addEvent" enctype='application/json'>
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
@@ -502,7 +502,7 @@
             formElem.onsubmit = async (e) => {
             e.preventDefault();
 
-            let response = await fetch('http://localhost:3000/events/addPhoto', {
+            let response = await fetch('https://follege.herokuapp.com/events/addPhoto', {
             method: 'POST',
             body: new FormData(formElem)
             });
@@ -521,6 +521,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+<div style="text-align:left; color:black; opacity:0.8; font-size:10px;">
+Made By : YATHARTH VARDAN &copy; follege 2020 :)
+</div>
     </body>
 
 </html>
