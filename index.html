@@ -271,6 +271,7 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-10 col-lg-10">
                 <div class="custom">
+                    <p>Select an Image and hit upload to save the image for the event to be registered :)</p>
                     <div class="ctop">
                         <p>Upload Image for this event</p>
                     </div>
@@ -285,7 +286,7 @@
 
         </div>
         <div class="fluid-container" style="text-align:center; margin-left:auto; margin-right:auto;">
-            <form id = "formElem" class="eventForm" method="POST" action="https://follege.herokuapp.com/events/addEvent" enctype='application/json'>
+            <form id = "formElem" target="success" onsubmit="showModal('show')" class="eventForm" method="POST" action="https://follege.herokuapp.com/events/addEvent" enctype='application/json'>
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
@@ -435,7 +436,7 @@
                                 <p>Start Date</p>
                             </div>
                             <div class="cinput">
-                                <input type="text" placeholder="( eg. 23 August 2020) write month starting with a capital" name="startDate" />
+                                <input type="text"  name="startDate" />
                             </div>
                         </div>
                     </div>
@@ -455,7 +456,7 @@
                                 <p>End Date (eg . 23 August 2020)</p>
                             </div>
                             <div class="cinput">
-                                <input type="text" placeholder="( eg. 23 August 2020) write month starting with a capital" name="endDate" />
+                                <input type="text" name="endDate" />
                             </div>
                         </div>
                     </div>
@@ -484,6 +485,25 @@
         </div>
         <p><button type="submit">Submit</button></p>
         </form>
+        <div class="modal" id="show" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">EVENT ADDED :)</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <iframe name="success" style="width:fit-content"></iframe>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" onclick="openAgain()">Submit another response</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
 
         <script>
             function tick(id) {
@@ -510,6 +530,17 @@
             var hide = document.getElementById('hide');
             hide.value = result;
         };
+
+        function showModal(id)
+        {
+            var modal = document.getElementById(id);
+            modal.style.display = "block";
+        }
+
+        function openAgain()
+        {
+            location.reload();
+        }
 
         </script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
