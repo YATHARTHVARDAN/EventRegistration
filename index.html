@@ -142,6 +142,7 @@
                 padding-left: 8px;
                 padding-right: 8px;
             }
+            
 
             button:hover {
                 cursor: pointer;
@@ -280,7 +281,7 @@
                     </div>
                 </div>
             </div>
-            <p><button type="submit">Upload</button></p>
+            <p><button type="submit"><span id="upload">Upload</span></button></p>
         </div>
         </form>
 
@@ -527,8 +528,15 @@
             body: new FormData(formElem)
             });
             let result = await response.json();
+            if(response.status==200)
+            {
+                alert("Image uploaded 👍");
+                var upload = document.getElementById('upload');
+                upload.innerText = "Uploaded ✔✔";
+            }
             var hide = document.getElementById('hide');
             hide.value = result;
+           
         };
 
         function showModal(id)
