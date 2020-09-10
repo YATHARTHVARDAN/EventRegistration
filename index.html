@@ -281,7 +281,7 @@
                     </div>
                 </div>
             </div>
-            <p><button type="submit"><span id="upload">Upload</span></button></p>
+            <p><button type="submit"><span id="upload">Upload</span></button> <span id="loading" style="display:none">loading...</span></p>
         </div>
         </form>
 
@@ -520,9 +520,12 @@
 
             var formElem = document.getElementById('imageForm');
 
+
             formElem.onsubmit = async (e) => {
             e.preventDefault();
-
+            
+                var loading = document.getElementById('loading');
+                loading.style.display = "block";
             let response = await fetch('https://follege.herokuapp.com/events/addPhoto', {
             method: 'POST',
             body: new FormData(formElem)
@@ -530,9 +533,9 @@
             let result = await response.json();
             if(response.status==200)
             {
-                alert("Image uploaded 👍");
+                loading.style.display="none";
                 var upload = document.getElementById('upload');
-                upload.innerText = "Uploaded ✔✔";
+                upload.innerText = "Saved ✔";
             }
             var hide = document.getElementById('hide');
             hide.value = result;
