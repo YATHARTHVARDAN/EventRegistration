@@ -287,7 +287,7 @@
 
         </div>
         <div class="fluid-container" style="text-align:center; margin-left:auto; margin-right:auto;">
-            <form id = "formElem" target="success" onsubmit="showModal('show')" class="eventForm" method="POST" action="http://localhost:3000/events/addEvent" enctype='application/json'>
+            <form id = "formElem" target="success" onsubmit="showModal('show')" class="eventForm" method="POST" action="https://follege.herokuapp.com/events/addEvent" enctype='application/json'>
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
@@ -533,7 +533,7 @@
             
                 var loading = document.getElementById('loading');
                 loading.style.display = "block";
-            let response = await fetch('http://localhost:3000/events/addPhoto', {
+            let response = await fetch('https://follege.herokuapp.com/events/addPhoto', {
             method: 'POST',
             body: new FormData(formElem)
             });
