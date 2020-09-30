@@ -287,7 +287,7 @@
 
         </div>
         <div class="fluid-container" style="text-align:center; margin-left:auto; margin-right:auto;">
-            <form id = "formElem" target="success" onsubmit="showModal('show')" class="eventForm" method="POST" action="https://follege.herokuapp.com/events/addEvent" enctype='application/json'>
+            <form id = "formElem" target="success" onsubmit="showModal('show')" class="eventForm" method="POST" action="https://event-follege.herokuapp.com/events/addEvent" enctype='application/json'>
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
@@ -441,10 +441,10 @@
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
                             <div class="ctop">
-                                <p>Start Date (eg . 23 Aug 2020)</p>
+                                <p>Start Date</p>
                             </div>
                             <div class="cinput">
-                                <input type="text" required name="startDate" />
+                                <input type="date" required name="startDate" />
                             </div>
                         </div>
                     </div>
@@ -454,17 +454,17 @@
                                 <p>Start Time</p>
                             </div>
                             <div class="cinput">
-                                <input type="text" required placeholder="(eg. 2:00 pm ->  14:00)" name="startTime" />
+                                <input type="time" required name="startTime" />
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
                             <div class="ctop">
-                                <p>End Date (eg . 23 Aug 2020)</p>
+                                <p>End Date</p>
                             </div>
                             <div class="cinput">
-                                <input type="text" name="endDate" />
+                                <input type="date" name="endDate" />
                             </div>
                         </div>
                     </div>
@@ -474,7 +474,7 @@
                                 <p>End Time</p>
                             </div>
                             <div class="cinput">
-                                <input type="text" placeholder="(eg. 2:00 pm ->  14:00)" name="endTime" id="" />
+                                <input type="time"  name="endTime" id="" />
                             </div>
                         </div>
                     </div>
