@@ -543,10 +543,16 @@
                 loading.style.display="none";
                 var upload = document.getElementById('upload');
                 upload.innerText = "Saved ✔";
+                var hide = document.getElementById('hide');
+                hide.value = result;
+                console.log(result);
             }
-            var hide = document.getElementById('hide');
-            hide.value = result;
-           
+            else{
+                loading.style.display="none";
+                var upload = document.getElementById('upload');
+                upload.innerText = "Upload";
+                alert("An error occurred , upload again");
+            }
         };
 
         function showModal(id)
