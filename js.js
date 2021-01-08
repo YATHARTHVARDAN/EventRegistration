@@ -1,4 +1,5 @@
-       
+
+
 function tick(id) {
     if (id == 'online')
     {

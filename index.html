@@ -40,7 +40,7 @@
 
         </div>
         <div class="fluid-container" style="text-align:center; margin-left:auto; margin-right:auto;">
-            <form id = "formElem" target="success" onsubmit="showModal('show')" class="eventForm" method="POST" action="https://event-follege.herokuapp.com/events/addEvent" enctype='application/json'>
+            <form id = "formElem" target="success" onsubmit="showModal('show')" class="eventForm" method="POST" action="http://localhost:3443/events/addEvent" enctype='application/json'>
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="custom">
@@ -183,7 +183,7 @@
                                 <p>Start Date</p>
                             </div>
                             <div class="cinput">
-                                <input type="date" required name="startDate" />
+                                <input type="date" required name="startDate"/>
                             </div>
                         </div>
                     </div>
@@ -214,6 +214,16 @@
                             </div>
                             <div class="cinput">
                                 <input type="time"  name="endTime" id="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="custom">
+                            <div class="ctop">
+                                <p>Last Date of Registration</p>
+                            </div>
+                            <div class="cinput">
+                                <input required type="date" name="lastDateofRegistraion"/>
                             </div>
                         </div>
                     </div>
